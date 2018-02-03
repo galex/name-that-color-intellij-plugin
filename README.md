@@ -2,11 +2,15 @@
 
 ## Introduction
 
-This is an Plugin port of [Name That Color](http://chir.ag/projects/ntc/)
+This is an Android Studio Plugin port of [Name That Color](http://chir.ag/projects/ntc/)
 
 ## Demonstration
 
-// TODO: add gif of plugin usage
+![Plugin demo](http://g.recordit.co/6xBRVQM2rA.gif)
+
+# Usage
+
+Have the color you want in your clipboard and use auto complete to automatically insert the color resource with its name. Magic!
 
 ## Install 
 
