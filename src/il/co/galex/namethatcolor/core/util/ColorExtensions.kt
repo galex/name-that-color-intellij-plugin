@@ -56,7 +56,7 @@ fun String.hsl(): Hsl {
 
 fun String.isValid(): Boolean {
 
-    var cup = this
+    var cup = this.toUpperCase()
     if (!cup.startsWith("#")) cup = "#$cup"
 
     if (cup.length != 4 && cup.length != 7) {

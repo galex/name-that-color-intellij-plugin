@@ -1,32 +1,22 @@
 <idea-plugin>
     <id>il.co.galex.namethatcolor</id>
     <name>Name That Color</name>
-    <version>0.0.1</version>
-    <vendor email="alexandre.gherschon" url="http://galex.co.il">Galex.co.il</vendor>
+    <version>0.9.1</version>
+    <vendor email="alexandre.gherschon@gmail.com" url="http://galex.co.il/namethatcolor">Alexander Gherschon</vendor>
 
     <description><![CDATA[
-      Name that color names automatically the color from your clipboard as an Android resource.<br>
+      Name the color you have in your clipboard directly inside your color resource file in Android Studio.<br>
+      Copy the color in your clipboard and go to your color resources files (usually colors.xml), then open the auto complete pop-up. You'll see there
+      a suggestion go generate the whole color item, with the name of the color
     ]]></description>
 
     <change-notes><![CDATA[
     ]]>
     </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="145.0"/>
-
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
+    <idea-version since-build="171"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.NameThatColorCompletionContributor" />
     </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
-
 </idea-plugin>
