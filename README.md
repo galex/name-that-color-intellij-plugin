@@ -1,10 +1,10 @@
-# Name That Color - Android/Studio/IntelliJ Plugin
+# Name That Color - Android Studio/IntelliJ Plugin
 
 ## Introduction
 
 This is an Android Studio Plugin port of [Name That Color](http://chir.ag/projects/ntc/)
 
-## Demonstration
+## Demo 
 
 ![Plugin demo](http://g.recordit.co/6xBRVQM2rA.gif)
 
