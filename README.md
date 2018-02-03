@@ -15,4 +15,5 @@ Open Settings > Plugins > Browse Plugins and type "Name That Color"
 
 ## License 
 
-Open source - to whatever you want with this.
+This plugin is released under the: Creative Commons License:
+Attribution 2.5 http://creativecommons.org/licenses/by/2.5/
