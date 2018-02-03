@@ -2,6 +2,10 @@ package il.co.galex.namethatcolor.core.util
 
 import il.co.galex.namethatcolor.core.model.Hsl
 import il.co.galex.namethatcolor.core.model.Rgb
+import java.util.regex.Pattern
+
+
+val PATTERN = Pattern.compile("#[0-9A-F]{6}$")!!
 
 /**
  * Transforms a hexadecimal color like "#8D90A1" to an Rgb(141, 144, 161)
@@ -14,6 +18,7 @@ fun String.rgb() = Rgb(
 
 /**
  * Transforms an hexadecimal color like "#8D90A1" to an Hsl(231, 10, 59)
+ * Based on http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
  */
 fun String.hsl(): Hsl {
 
@@ -47,6 +52,25 @@ fun String.hsl(): Hsl {
 
         return Hsl(h.round(), s.roundTo2Decimal(), l.roundTo2Decimal())
     }
+}
+
+fun String.isValid(): Boolean {
+
+    var cup = this
+    if (!cup.startsWith("#")) cup = "#$cup"
+
+    if (cup.length != 4 && cup.length != 7) {
+        return false
+    } else if (cup.length == 4) {
+        cup = "#" + cup[1] + cup[1] + cup[2] + cup[2] + cup[3] + cup[3]
+    }
+
+    return PATTERN.matcher(cup).matches()
+}
+
+fun String.toXmlName(): String {
+
+    return this.toLowerCase().replace(" ", "_")
 }
 
 private fun Double.round() = Math.round(this).toInt()

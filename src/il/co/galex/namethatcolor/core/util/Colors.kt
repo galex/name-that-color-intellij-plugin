@@ -1,5 +1,9 @@
 package il.co.galex.namethatcolor.core.util
 
+/**
+ * List of hexadecimal colors
+ * Based on http://chir.ag/projects/ntc/ntc.js
+ */
 val colorsNames = mapOf(
         "000000" to "Black",
         "000080" to "Navy Blue",

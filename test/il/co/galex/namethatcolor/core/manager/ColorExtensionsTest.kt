@@ -38,17 +38,4 @@ class ColorExtensionsTest {
         // some other random color with different values
         assertEquals(Hsl(254, 46, 11), "#150f29".hsl())
     }
-
-
-    @Test
-    fun name() {
-        // black exact match
-        assertEquals("Black", ColorNameFinder.name("#000000"))
-        // non exact match
-        assertEquals("Black Russian", ColorNameFinder.name("#000010"))
-        // white exact match
-        assertEquals("White", ColorNameFinder.name("#FFFFFF"))
-        // white with 3 letters only
-        assertEquals("White", ColorNameFinder.name("#FFF"))
-    }
 }
