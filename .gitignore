@@ -2,3 +2,6 @@ out
 .idea
 *.iml
 *.jar
+.DS_Store
+.gradle
+build

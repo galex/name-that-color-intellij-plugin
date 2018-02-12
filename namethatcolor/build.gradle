@@ -1,0 +1,18 @@
+plugins {
+    id "org.jetbrains.intellij" version "0.2.18"
+    id "org.jetbrains.kotlin.jvm" version "1.2.21"
+}
+
+intellij {
+    version '2017.2'
+    pluginName 'name-that-color'
+}
+
+publishPlugin {
+    username pluginsDevUser
+    password pluginsDevPassword
+}
+
+patchPluginXml {
+    version "0.9.2"
+}
