@@ -3,6 +3,7 @@ package il.co.galex.namethatcolor.core.manager
 import il.co.galex.namethatcolor.core.util.colorsNames
 import il.co.galex.namethatcolor.core.exception.ColorNotFoundException
 import il.co.galex.namethatcolor.core.model.Color
+import il.co.galex.namethatcolor.core.util.colorsMaterialNames
 import il.co.galex.namethatcolor.core.util.hsl
 import il.co.galex.namethatcolor.core.util.rgb
 
@@ -15,11 +16,22 @@ typealias HexColor = String
 object ColorNameFinder {
 
     private var colors: List<Color> = colorsNames.map { entry -> Color(entry.key, entry.value, "#${entry.key}".rgb(), "#${entry.key}".hsl()) }
+    private var materialColors: List<Color> = colorsMaterialNames.map { entry -> Color(entry.key, entry.value, "#${entry.key}".rgb(), "#${entry.key}".hsl()) }
 
     /**
      * look for the Color of an hexadecimal color
      */
-    fun color(color: HexColor): Color {
+    fun findColor(color: HexColor) = find(color, colors)
+
+    /**
+     * look for the Color of an hexadecimal material color
+     */
+    fun findMaterialColor(color: HexColor) = find(color, materialColors)
+
+    /**
+     * look for the Color of an hexadecimal color
+     */
+    private fun find(color: HexColor, colors: List<Color>): Color {
 
         var cup = color
         if (!cup.startsWith("#")) cup = "#$cup"

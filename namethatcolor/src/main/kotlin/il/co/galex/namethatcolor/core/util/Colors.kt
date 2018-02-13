@@ -1,7 +1,9 @@
 package il.co.galex.namethatcolor.core.util
 
+import il.co.galex.namethatcolor.core.model.Color
+
 /**
- * List of hexadecimal colors
+ * List of colors
  * Based on http://chir.ag/projects/ntc/ntc.js
  */
 val colorsNames = mapOf(
@@ -39,10 +41,10 @@ val colorsNames = mapOf(
         "00A693" to "Persian Green",
         "00A86B" to "Jade",
         "00CC99" to "Caribbean Green",
-        "00CCCC" to "Robin's Egg Blue",
+        "00CCCC" to "Robins Egg Blue",
         "00FF00" to "Green",
         "00FF7F" to "Spring Green",
-        "00FFFF" to "Cyan / Aqua",
+        "00FFFF" to "Cyan Aqua",
         "010D1A" to "Blue Charcoal",
         "011635" to "Midnight",
         "011D13" to "Holly",
@@ -475,7 +477,7 @@ val colorsNames = mapOf(
         "661010" to "Dark Tan",
         "66B58F" to "Silver Tree",
         "66FF00" to "Bright Green",
-        "66FF66" to "Screamin' Green",
+        "66FF66" to "Screamin Green",
         "67032D" to "Black Rose",
         "675FA6" to "Scampi",
         "676662" to "Ironside Gray",
@@ -717,7 +719,7 @@ val colorsNames = mapOf(
         "960018" to "Carmine",
         "964B00" to "Brown",
         "967059" to "Leather",
-        "9678B6" to "Purple Mountain's Majesty",
+        "9678B6" to "Purple Mountains Majesty",
         "967BB6" to "Lavender Purple",
         "96A8A1" to "Pewter",
         "96BBAB" to "Summer Green",
@@ -1442,7 +1444,7 @@ val colorsNames = mapOf(
         "FF0000" to "Red",
         "FF007F" to "Rose",
         "FF00CC" to "Purple Pizzazz",
-        "FF00FF" to "Magenta / Fuchsia",
+        "FF00FF" to "Magenta Fuchsia",
         "FF2400" to "Scarlet",
         "FF3399" to "Wild Strawberry",
         "FF33CC" to "Razzle Dazzle Rose",
@@ -1571,3 +1573,4 @@ val colorsNames = mapOf(
         "FFFFB4" to "Portafino",
         "FFFFF0" to "Ivory",
         "FFFFFF" to "White")
+
