@@ -8,9 +8,8 @@ import com.intellij.psi.impl.source.xml.XmlTagImpl
 import com.intellij.util.ProcessingContext
 import il.co.galex.namethatcolor.core.exception.ColorNotFoundException
 import il.co.galex.namethatcolor.core.manager.ColorNameFinder
-import il.co.galex.namethatcolor.core.manager.HexColor
 import il.co.galex.namethatcolor.core.model.Color
-import il.co.galex.namethatcolor.core.util.isValid
+import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
 
 class NameThatColorCompletionContributor : CompletionContributor() {
@@ -28,13 +27,11 @@ class NameThatColorCompletionContributor : CompletionContributor() {
 
                     val textInClipboard = ClipboardUtil.getTextInClipboard()
                     textInClipboard?.let {
-                        if (textInClipboard.isNotEmpty() && textInClipboard.isValid()) {
 
-                            val insertedColor = if (!textInClipboard.startsWith("#")) "#$textInClipboard" else textInClipboard
+                        val insertedColor = if (!textInClipboard.startsWith("#")) "#$textInClipboard" else textInClipboard
 
-                            resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findColor)
-                            resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findMaterialColor)
-                        }
+                        resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findColor)
+                        resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findMaterialColor)
                     }
                 }
             }
@@ -44,12 +41,13 @@ class NameThatColorCompletionContributor : CompletionContributor() {
     private inline fun CompletionResultSet.addElement(textInClipboard: String, insertedColor: String, find: (color: HexColor) -> Color) {
 
         try {
-            val color = find(textInClipboard)
+            val color = find(HexColor(textInClipboard))
             val insert = "<color name=\"${color.name.toXmlName()}\">$insertedColor</color>"
             addElement(LookupElementBuilder.create(insert))
-
         } catch (e: ColorNotFoundException) {
-
+            println(e.localizedMessage)
+        } catch (e: IllegalArgumentException) {
+            println(e.localizedMessage)
         }
     }
 }

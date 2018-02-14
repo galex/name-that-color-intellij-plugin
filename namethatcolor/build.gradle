@@ -4,8 +4,9 @@ plugins {
 }
 
 intellij {
-    version '2017.2'
-    pluginName 'name-that-color'
+    version '2017.1'
+    pluginName 'NameThatColor'
+    type 'AI'
 }
 
 publishPlugin {
@@ -15,4 +16,5 @@ publishPlugin {
 
 patchPluginXml {
     version "1.0.0"
+    sinceBuild '171'
 }
