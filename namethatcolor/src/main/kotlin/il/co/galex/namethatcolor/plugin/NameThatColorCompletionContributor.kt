@@ -28,21 +28,27 @@ class NameThatColorCompletionContributor : CompletionContributor() {
                     val textInClipboard = ClipboardUtil.getTextInClipboard()
                     textInClipboard?.let {
 
-                        val insertedColor = if (!textInClipboard.startsWith("#")) "#$textInClipboard" else textInClipboard
-
-                        resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findColor)
-                        resultSet.addElement(textInClipboard, insertedColor, ColorNameFinder::findMaterialColor)
+                        resultSet.addElement(textInClipboard, ColorNameFinder::findColor)
+                        resultSet.addElement(textInClipboard, ColorNameFinder::findMaterialColor)
                     }
                 }
             }
         })
     }
 
-    private inline fun CompletionResultSet.addElement(textInClipboard: String, insertedColor: String, find: (color: HexColor) -> Color) {
+    private inline fun CompletionResultSet.addElement(textInClipboard: String, find: (color: HexColor) -> Pair<HexColor, Color>) {
 
         try {
-            val color = find(HexColor(textInClipboard))
-            val insert = "<color name=\"${color.name.toXmlName()}\">$insertedColor</color>"
+            val colors = find(HexColor(textInClipboard))
+
+            var name = colors.second.name.toXmlName()
+
+            val percentAlpha = colors.first.percentAlpha()
+            if(percentAlpha != null) {
+                name += "_$percentAlpha"
+            }
+
+            val insert = "<color name=\"$name\">${colors.first.toString()}</color>"
             addElement(LookupElementBuilder.create(insert))
         } catch (e: ColorNotFoundException) {
             println(e.localizedMessage)

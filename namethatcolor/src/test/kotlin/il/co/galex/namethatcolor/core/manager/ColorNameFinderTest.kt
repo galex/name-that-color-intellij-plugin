@@ -9,12 +9,12 @@ class ColorNameFinderTest {
     @Test
     fun `find a color`() {
         // black exact match
-        assertEquals("Black", ColorNameFinder.findColor(HexColor("#000000")).name)
+        assertEquals("Black", ColorNameFinder.findColor(HexColor("#000000")).second.name)
         // non exact match
-        assertEquals("Black Russian", ColorNameFinder.findColor(HexColor("#000010")).name)
+        assertEquals("Black Russian", ColorNameFinder.findColor(HexColor("#000010")).second.name)
         // white exact match
-        assertEquals("White", ColorNameFinder.findColor(HexColor("#FFFFFF")).name)
+        assertEquals("White", ColorNameFinder.findColor(HexColor("#FFFFFF")).second.name)
         // white with 3 letters only
-        assertEquals("White", ColorNameFinder.findColor(HexColor("#FFF")).name)
+        assertEquals("White", ColorNameFinder.findColor(HexColor("#FFF")).second.name)
     }
 }

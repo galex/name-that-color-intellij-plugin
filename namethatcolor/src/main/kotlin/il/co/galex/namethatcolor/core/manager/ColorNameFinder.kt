@@ -30,7 +30,7 @@ object ColorNameFinder {
     /**
      * look for the Color of an hexadecimal color
      */
-    private fun find(color: HexColor, colors: List<Color>): Color {
+    private fun find(color: HexColor, colors: List<Color>): Pair<HexColor, Color> {
 
         val (r, g, b) = color.rgb()
         val (h, s, l) = color.hsl()
@@ -40,7 +40,7 @@ object ColorNameFinder {
 
         colors.forEachIndexed { index, col ->
 
-            if (color.value == col.hexCode) return col
+            if (color.value == col.hexCode) return color to col
             else {
                 val ndf1 = Math.pow((r - col.rgb.r).toDouble(), 2.0).toInt() + Math.pow((g - col.rgb.g).toDouble(), 2.0).toInt() + Math.pow((b - col.rgb.b).toDouble(), 2.0).toInt()
                 val ndf2 = Math.pow((h - col.hsl.h).toDouble(), 2.0).toInt() + Math.pow((s - col.hsl.s).toDouble(), 2.0).toInt() + Math.pow((l - col.hsl.l).toDouble(), 2.0).toInt()
@@ -55,6 +55,6 @@ object ColorNameFinder {
         // if not found a close by one, we return an error
         if (cl < 0) throw ColorNotFoundException()
         // if found, return the name
-        return colors[cl]
+        return color to colors[cl]
     }
 }
