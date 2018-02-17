@@ -19,6 +19,6 @@
     <idea-version since-build="171"/>
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.NameThatColorCompletionContributor" />
+        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.ClipboardCompletionContributor" />
     </extensions>
 </idea-plugin>

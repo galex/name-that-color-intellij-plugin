@@ -4,20 +4,20 @@ import il.co.galex.namethatcolor.core.util.hsl
 import il.co.galex.namethatcolor.core.util.rgb
 import il.co.galex.namethatcolor.core.util.roundTo2Decimal
 
-class HexColor(color: String) {
+class HexColor(val input: String) {
 
     private var alpha: String? = null
     val value: String
 
     init {
-        var cup = color.toUpperCase()
+        var cup = input.toUpperCase()
 
         if (cup.isEmpty()) {
-            throw IllegalArgumentException("The color cannot be an empty string")
+            throw IllegalArgumentException("The input cannot be an empty string")
         }
 
-        if (color.startsWith("#")) {
-            cup = color.substringAfter("#")
+        if (input.startsWith("#")) {
+            cup = input.substringAfter("#")
         }
 
         when (cup.length) {
@@ -59,6 +59,8 @@ class HexColor(color: String) {
     fun percentAlpha(): Int? = alpha?.run { (toInt(16) / 255.0).roundTo2Decimal() }
 
     override fun toString(): String = PREFIX + if (alpha == null) value else "$alpha$value"
+
+    fun inputToString() = if (input.startsWith("#")) input else "$PREFIX$input"
 
     companion object {
         private const val PREFIX = "#"
