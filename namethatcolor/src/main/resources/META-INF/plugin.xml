@@ -20,5 +20,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.ClipboardCompletionContributor" />
+        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.CaretCompletionContributor" />
     </extensions>
 </idea-plugin>
