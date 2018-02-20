@@ -11,9 +11,20 @@ class HexColorTest {
     }
 
     @Test
+    fun `input color of 3 chars with lowercase letters`() {
+        assertEquals(HexColor("32d").toString(), "#3322DD")
+    }
+
+    @Test
     fun `input color of 3 chars with #`() {
         assertEquals(HexColor("#32D").toString(), "#3322DD")
     }
+
+    @Test
+    fun `input color of 3 chars with # and lowercase letters`() {
+        assertEquals(HexColor("#ddd").toString(), "#DDDDDD")
+    }
+
     @Test
     fun `input color of 3 chars with alpha`() {
         assertEquals(HexColor("032D").toString(), "#003322DD")
@@ -33,6 +44,7 @@ class HexColorTest {
     fun `input color of 6 chars with #`() {
         assertEquals(HexColor("#123456").toString(), "#123456")
     }
+
     @Test
     fun `input color of 6 chars with alpha`() {
         assertEquals(HexColor("A1B1C1D1").toString(), "#A1B1C1D1")

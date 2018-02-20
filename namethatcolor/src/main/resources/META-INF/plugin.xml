@@ -19,7 +19,15 @@
     <idea-version since-build="171"/>
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.ClipboardCompletionContributor" />
-        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.CaretCompletionContributor" />
+        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.completion.ClipboardCompletionContributor" />
+        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.completion.CaretCompletionContributor" />
+
+        <!--<intentionAction>
+            <className>il.co.galex.namethatcolor.plugin.intention.NameColorIntention</className>
+            <category>Android</category>
+        </intentionAction>-->
+
+        <annotator language="XML" implementationClass="il.co.galex.namethatcolor.plugin.annotator.ColorAnnotator"/>
+
     </extensions>
 </idea-plugin>

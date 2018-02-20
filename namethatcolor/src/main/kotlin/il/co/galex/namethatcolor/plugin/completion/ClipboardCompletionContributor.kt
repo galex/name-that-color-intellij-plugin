@@ -1,4 +1,4 @@
-package il.co.galex.namethatcolor.plugin
+package il.co.galex.namethatcolor.plugin.completion
 
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.completion.CompletionUtilCore.DUMMY_IDENTIFIER_TRIMMED
@@ -14,15 +14,12 @@ import il.co.galex.namethatcolor.core.model.Color
 import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
 
-/**
- * Completes the color on the caret after the color was written
- * (For some reason this shows up in the IDE only for lowercase entered colors)
- */
-class CaretCompletionContributor : CompletionContributor() {
+class ClipboardCompletionContributor : CompletionContributor() {
 
     companion object {
         private const val RESOURCES_TAG_NAME = "resources"
         private val place = XmlPatterns.psiElement(XmlToken::class.java)
+                .withText(DUMMY_IDENTIFIER_TRIMMED)
                 .withParent(XmlPatterns.xmlText()
                         .withParent(XmlPatterns.psiElement(XmlTag::class.java)
                                 .withName(RESOURCES_TAG_NAME)
@@ -35,10 +32,10 @@ class CaretCompletionContributor : CompletionContributor() {
 
             override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext?, resultSet: CompletionResultSet) {
 
-                val text = parameters.position.text.replace(DUMMY_IDENTIFIER_TRIMMED, "")
-
-                resultSet.addElement(text, ColorNameFinder::findColor)
-                resultSet.addElement(text, ColorNameFinder::findMaterialColor)
+                ClipboardUtil.getTextInClipboard()?.let {
+                    resultSet.addElement(it, ColorNameFinder::findColor)
+                    resultSet.addElement(it, ColorNameFinder::findMaterialColor)
+                }
             }
         })
     }
@@ -53,9 +50,8 @@ class CaretCompletionContributor : CompletionContributor() {
                 name += "_$percentAlpha"
             }
 
-            val insert = "<color name=\"$name\">${hexColor.inputToString().toUpperCase()}</color>"
+            val insert = "<color name=\"$name\">${hexColor.inputToString()}</color>"
             addElement(LookupElementBuilder.create(insert))
-
         } catch (e: ColorNotFoundException) {
             println(e.localizedMessage)
         } catch (e: IllegalArgumentException) {

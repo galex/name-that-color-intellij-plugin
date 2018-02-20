@@ -16,8 +16,8 @@ class HexColor(val input: String) {
             throw IllegalArgumentException("The input cannot be an empty string")
         }
 
-        if (input.startsWith("#")) {
-            cup = input.substringAfter("#")
+        if (cup.startsWith("#")) {
+            cup = cup.substringAfter("#")
         }
 
         when (cup.length) {
@@ -64,8 +64,8 @@ class HexColor(val input: String) {
 
     companion object {
         private const val PREFIX = "#"
-        private val VALUE_REGEX = Regex("[0-9A-F]{6}$")
-        private val ALPHA_REGEX = Regex("[0-9A-F]{2}$")
+        private val VALUE_REGEX = Regex("[0-9a-fA-F]{6}$")
+        private val ALPHA_REGEX = Regex("[0-9a-fA-F]{2}$")
     }
 
     private operator fun Char.plus(c: Char): String {
