@@ -11,6 +11,9 @@
     ]]></description>
 
     <change-notes><![CDATA[
+    - 1.3.0:
+        - Added quick fix for typed colors. You can just type "aaa" and this plugin will suggest a quick fix to the right color or material color
+    - 1.2.0:
     - Added Material Colors as a second choice<br>
     - Added Alpha in the beginning of the color (#80FAFAFA will become alabaster_50)
     ]]>
