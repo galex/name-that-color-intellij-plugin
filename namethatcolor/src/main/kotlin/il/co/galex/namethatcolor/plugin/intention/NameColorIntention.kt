@@ -1,16 +1,13 @@
 package il.co.galex.namethatcolor.plugin.intention
 
 import com.intellij.codeInsight.intention.IntentionAction
+import com.intellij.lang.ASTFactory
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
-import com.intellij.psi.PsiFile
-import com.intellij.psi.XmlElementFactory
-import com.intellij.psi.formatter.FormatterUtil
-import com.intellij.psi.impl.source.xml.XmlTagImpl
+import com.intellij.psi.*
+import com.intellij.psi.xml.XmlElementType
 import com.intellij.psi.xml.XmlFile
-import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlText
-import com.intellij.xml.util.XmlPsiUtil
 import il.co.galex.namethatcolor.core.manager.ColorNameFinder
 import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
@@ -27,7 +24,7 @@ class NameColorIntention(private val hexColor: HexColor) : IntentionAction {
         if (file is XmlFile) {
             file.rootTag?.let { rootTag ->
                 val elements = rootTag.children.filter { it is XmlText }
-                elements.forEach {oldElement ->
+                elements.forEach { oldElement ->
                     val text = oldElement.text.replace("\n", "").trim()
                     if (text == hexColor.input) {
 
@@ -39,14 +36,16 @@ class NameColorIntention(private val hexColor: HexColor) : IntentionAction {
                         }
 
                         val insert = "<color name=\"$name\">${hexColor.inputToString()}</color>"
-                        val newElement = XmlElementFactory.getInstance(project).createTagFromText(insert)
-
+                        var newElement: PsiElement = XmlElementFactory.getInstance(project).createTagFromText(insert)
                         val split = oldElement.text.split(hexColor.input)
-                        oldElement.replace(newElement)
-                        if (split.isNotEmpty()) rootTag.addBefore(XmlElementFactory.getInstance(project).createDisplayText(split[0]), oldElement)
-                        if (split.size > 1) rootTag.addAfter(XmlElementFactory.getInstance(project).createDisplayText(split[1].trim()), oldElement)
+                        newElement = oldElement.replace(newElement)
+                        if (split.isNotEmpty()) {
+                            val beforeElement = rootTag.addBefore(insert(project, split[0]), newElement)
+                        }
 
-
+                        if (split.size > 1) {
+                            val afterElement = rootTag.addAfter(insert(project, split[1]), newElement)
+                        }
 
                         // get out of our loop if we found one to replace
                         return@forEach
@@ -54,5 +53,11 @@ class NameColorIntention(private val hexColor: HexColor) : IntentionAction {
                 }
             }
         }
+    }
+
+    private fun insert(project: Project, text: String): XmlText {
+        val tagFromText = XmlElementFactory.getInstance(project).createTagFromText("<a>$text</a>")
+        val textElements = tagFromText.value.textElements
+        return if (textElements.isEmpty()) ASTFactory.composite(XmlElementType.XML_TEXT) as XmlText else textElements[0]
     }
 }
