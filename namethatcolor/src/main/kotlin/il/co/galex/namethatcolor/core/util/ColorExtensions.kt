@@ -2,7 +2,6 @@ package il.co.galex.namethatcolor.core.util
 
 import il.co.galex.namethatcolor.core.model.Hsl
 import il.co.galex.namethatcolor.core.model.Rgb
-import java.util.regex.Pattern
 
 /**
  * Transforms a hexadecimal color like "8D90A1" to an Rgb(141, 144, 161)
@@ -52,4 +51,10 @@ fun String.hsl(): Hsl {
 }
 
 
-fun String.toXmlName(): String = this.toLowerCase().replace(" ", "_")
+fun String.toXmlName(percentAlpha: Int?): String {
+    var name = this.toLowerCase().replace(" ", "_")
+    if (percentAlpha != null) {
+        name += "_$percentAlpha"
+    }
+    return name
+}

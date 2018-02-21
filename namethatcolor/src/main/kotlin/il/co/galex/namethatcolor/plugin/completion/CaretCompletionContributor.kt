@@ -12,7 +12,10 @@ import il.co.galex.namethatcolor.core.manager.ColorNameFinder
 import il.co.galex.namethatcolor.core.model.Color
 import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
+import il.co.galex.namethatcolor.plugin.util.NAME_THAT_COLOR
+import il.co.galex.namethatcolor.plugin.util.NAME_THAT_MATERIAL_COLOR
 import il.co.galex.namethatcolor.plugin.util.PLACE
+import il.co.galex.namethatcolor.plugin.util.addElement
 
 /**
  * Completes the color on the caret after the color was written
@@ -27,29 +30,9 @@ class CaretCompletionContributor : CompletionContributor() {
 
                 val text = parameters.position.text.replace(DUMMY_IDENTIFIER_TRIMMED, "")
 
-                resultSet.addElement(text, ColorNameFinder::findColor)
-                resultSet.addElement(text, ColorNameFinder::findMaterialColor)
+                resultSet.addElement(NAME_THAT_COLOR, text, ColorNameFinder::findColor)
+                resultSet.addElement(NAME_THAT_MATERIAL_COLOR, text, ColorNameFinder::findMaterialColor)
             }
         })
-    }
-
-    private inline fun CompletionResultSet.addElement(clipboard: String, find: (color: HexColor) -> Pair<HexColor, Color>) {
-
-        try {
-            val (hexColor, color) = find(HexColor(clipboard))
-            var name = color.name.toXmlName()
-            val percentAlpha = hexColor.percentAlpha()
-            if (percentAlpha != null) {
-                name += "_$percentAlpha"
-            }
-
-            val insert = "<color name=\"$name\">${hexColor.inputToString().toUpperCase()}</color>"
-            addElement(LookupElementBuilder.create(insert))
-
-        } catch (e: ColorNotFoundException) {
-            println(e.localizedMessage)
-        } catch (e: IllegalArgumentException) {
-            println(e.localizedMessage)
-        }
     }
 }
