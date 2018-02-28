@@ -17,7 +17,7 @@ class ColorAnnotator : Annotator {
         try {
             val color = HexColor(element.text)
             // we found a value that is a valid color, checking that it is not already in a <color> tag
-            if ((element.parent as XmlTextImpl).parentTag?.name != "color") {
+            if ((element.parent as XmlTextImpl).parentTag?.name == RESOURCES_TAG_NAME) {
 
                 // color list from name that color
                 holder.createErrorAnnotation(element, COLOR_ANNOTATION_MESSAGE)
