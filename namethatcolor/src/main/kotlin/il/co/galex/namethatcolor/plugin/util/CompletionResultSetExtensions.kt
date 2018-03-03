@@ -12,7 +12,7 @@ inline fun CompletionResultSet.addElement(message: String, clipboard: String, fi
     try {
         val (hexColor, color) = find(HexColor(clipboard))
         val name = color.name.toXmlName(hexColor.percentAlpha())
-        val insert = "<color name=\"$name\">${hexColor.inputToString().toUpperCase()}</color>"
+        val insert = xmlOutput(name, hexColor.inputToString())
         addElement(LookupElementBuilder.create(insert).withPresentableText(message))
 
     } catch (e: ColorNotFoundException) {

@@ -2,16 +2,8 @@ package il.co.galex.namethatcolor.plugin.completion
 
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.completion.CompletionUtilCore.DUMMY_IDENTIFIER_TRIMMED
-import com.intellij.codeInsight.lookup.LookupElementBuilder
-import com.intellij.patterns.XmlPatterns
-import com.intellij.psi.xml.XmlTag
-import com.intellij.psi.xml.XmlToken
 import com.intellij.util.ProcessingContext
-import il.co.galex.namethatcolor.core.exception.ColorNotFoundException
 import il.co.galex.namethatcolor.core.manager.ColorNameFinder
-import il.co.galex.namethatcolor.core.model.Color
-import il.co.galex.namethatcolor.core.model.HexColor
-import il.co.galex.namethatcolor.core.util.toXmlName
 import il.co.galex.namethatcolor.plugin.util.NAME_THAT_COLOR
 import il.co.galex.namethatcolor.plugin.util.NAME_THAT_MATERIAL_COLOR
 import il.co.galex.namethatcolor.plugin.util.PLACE

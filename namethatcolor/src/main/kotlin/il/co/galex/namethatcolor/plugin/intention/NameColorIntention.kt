@@ -4,13 +4,16 @@ import com.intellij.codeInsight.intention.IntentionAction
 import com.intellij.lang.ASTFactory
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
-import com.intellij.psi.*
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
+import com.intellij.psi.XmlElementFactory
 import com.intellij.psi.xml.XmlElementType
 import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlText
 import il.co.galex.namethatcolor.core.model.Color
 import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
+import il.co.galex.namethatcolor.plugin.util.xmlOutput
 
 class NameColorIntention(private val text: String, private val hexColor: HexColor, private val find: (color: HexColor) -> Pair<HexColor, Color>) : IntentionAction {
 
@@ -30,8 +33,8 @@ class NameColorIntention(private val text: String, private val hexColor: HexColo
 
                         val (hexColor, color) = find(HexColor(hexColor.input))
                         val name = color.name.toXmlName(hexColor.percentAlpha())
+                        val insert = xmlOutput(name, hexColor.inputToString())
 
-                        val insert = "<color name=\"$name\">${hexColor.inputToString()}</color>"
                         var newElement: PsiElement = XmlElementFactory.getInstance(project).createTagFromText(insert)
                         val split = oldElement.text.split(hexColor.input)
                         newElement = oldElement.replace(newElement)
