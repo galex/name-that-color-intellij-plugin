@@ -45,7 +45,7 @@ The Plugin accepts all formats of colors allowed in Android (lowercase or upperc
 
 ### Name that color
 
-If you chose to use "Name That Color", this [list of colors](https://github.com/galex/name-that-color-intellij-plugin/blob/master/namethatcolor/src/main/kotlin/il/co/galex/namethatcolor/core/util/Colors.kt) is used. If the exact color is not found, the algorithm will find the closest match, if possible. 
+If you chose to use "Name that color", this [list of colors](https://github.com/galex/name-that-color-intellij-plugin/blob/master/namethatcolor/src/main/kotlin/il/co/galex/namethatcolor/core/util/Colors.kt) is used. If the exact color is not found, the algorithm will find the closest match, if possible. 
 
 ##### Examples
 
@@ -58,7 +58,7 @@ If you chose to use "Name That Color", this [list of colors](https://github.com/
 
 ### Name that material color
 
-If you chose to use "Name That Color", this [list of material colors](https://github.com/galex/name-that-color-intellij-plugin/blob/master/namethatcolor/src/main/kotlin/il/co/galex/namethatcolor/core/util/MaterialColors.kt) is used. If the exact color is not found, the algorithm will find the closest match, if possible.
+If you chose to use "Name that material color", this [list of material colors](https://github.com/galex/name-that-color-intellij-plugin/blob/master/namethatcolor/src/main/kotlin/il/co/galex/namethatcolor/core/util/MaterialColors.kt) is used. If the exact color is not found, the algorithm will find the closest match, if possible.
 
 ##### Examples
 
@@ -71,7 +71,7 @@ If you chose to use "Name That Color", this [list of material colors](https://gi
 
 ## Install
 
-In Android Studio, open **Settings** > **Plugins** > **Browse Plugins and type** "name that color".
+In Android Studio, open **Settings** > **Plugins** > **Browse Plugins** and type "**name that color**".
 
 ## Thanks
 
