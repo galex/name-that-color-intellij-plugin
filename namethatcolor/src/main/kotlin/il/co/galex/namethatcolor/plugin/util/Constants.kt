@@ -14,6 +14,7 @@ const val MATERIAL_COLOR_ANNOTATION_MESSAGE = "Convert this automatically to an 
 const val ALPHA_SEPARATOR = "_alpha_"
 
 const val RESOURCES_TAG_NAME = "resources"
+
 val PLACE = XmlPatterns.psiElement(XmlToken::class.java)
         .withText(CompletionUtilCore.DUMMY_IDENTIFIER_TRIMMED)
         .withParent(XmlPatterns.xmlText()

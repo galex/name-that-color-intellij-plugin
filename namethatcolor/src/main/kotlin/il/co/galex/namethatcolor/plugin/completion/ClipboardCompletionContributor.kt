@@ -17,7 +17,7 @@ class ClipboardCompletionContributor : CompletionContributor() {
     init {
         extend(CompletionType.BASIC, PLACE, object : CompletionProvider<CompletionParameters>() {
 
-            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext?, resultSet: CompletionResultSet) {
+            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
 
                 ClipboardUtil.getTextInClipboard()?.let {
                     resultSet.addElement(NAME_THAT_COLOR, it, ColorNameFinder::findColor)

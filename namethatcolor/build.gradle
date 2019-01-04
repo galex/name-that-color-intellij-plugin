@@ -1,10 +1,17 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
 plugins {
-    id "org.jetbrains.intellij" version "0.2.18"
-    id "org.jetbrains.kotlin.jvm" version "1.2.21"
+    id "org.jetbrains.intellij" version "0.4.1"
+    id "org.jetbrains.kotlin.jvm" version "1.2.0"
 }
 
 intellij {
-    version '2017.3'
+    version '2018.3'
     pluginName 'NameThatColor'
     type 'AI'
 }
@@ -15,6 +22,6 @@ publishPlugin {
 }
 
 patchPluginXml {
-    version "1.4.0"
+    version "1.5.0"
     sinceBuild '171'
 }

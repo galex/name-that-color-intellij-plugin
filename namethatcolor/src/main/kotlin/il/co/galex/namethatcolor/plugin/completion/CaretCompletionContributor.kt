@@ -18,7 +18,7 @@ class CaretCompletionContributor : CompletionContributor() {
     init {
         extend(CompletionType.BASIC, PLACE, object : CompletionProvider<CompletionParameters>() {
 
-            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext?, resultSet: CompletionResultSet) {
+            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
 
                 val text = parameters.position.text.replace(DUMMY_IDENTIFIER_TRIMMED, "")
 

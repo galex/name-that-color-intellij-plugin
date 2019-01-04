@@ -28,7 +28,6 @@ class NameColorIntention(private val text: String, private val hexColor: HexColo
             file.rootTag?.let { rootTag ->
                 val elements = rootTag.children.filter { it is XmlText }
                 elements.forEach { oldElement ->
-                    val text = oldElement.text.replace("\n", "").trim()
                     if (oldElement.text.contains(hexColor.input)) {
 
                         val (hexColor, color) = find(HexColor(hexColor.input))
