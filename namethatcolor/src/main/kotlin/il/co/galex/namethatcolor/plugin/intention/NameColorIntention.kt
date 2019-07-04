@@ -31,8 +31,8 @@ class NameColorIntention(private val text: String, private val hexColor: HexColo
                     if (oldElement.text.contains(hexColor.input)) {
 
                         val (hexColor, color) = find(HexColor(hexColor.input))
-                        val name = color.name.toXmlName(hexColor.percentAlpha())
-                        val insert = xmlOutput(name, hexColor.inputToString())
+                        val name = color.name.toXmlName(hexColor.percentAlpha)
+                        val insert = xmlOutput(name, hexColor.toString())
 
                         var newElement: PsiElement = XmlElementFactory.getInstance(project).createTagFromText(insert)
                         val split = oldElement.text.split(hexColor.input)

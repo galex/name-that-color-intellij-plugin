@@ -1,88 +1,124 @@
 package il.co.galex.namethatcolor.core.model
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class HexColorTest {
 
     @Test
     fun `input color of 3 chars`() {
-        assertEquals(HexColor("32D").toString(), "#3322DD")
+        assertEquals("#3322DD", HexColor("32D").toString())
     }
 
     @Test
     fun `input color of 3 chars with lowercase letters`() {
-        assertEquals(HexColor("32d").toString(), "#3322DD")
+        assertEquals("#3322DD", HexColor("32d").toString())
     }
 
     @Test
     fun `input color of 3 chars with #`() {
-        assertEquals(HexColor("#32D").toString(), "#3322DD")
+        assertEquals("#3322DD", HexColor("#32D").toString())
     }
 
     @Test
     fun `input color of 3 chars with # and lowercase letters`() {
-        assertEquals(HexColor("#ddd").toString(), "#DDDDDD")
+        assertEquals("#DDDDDD", HexColor("#ddd").toString())
     }
 
     @Test
     fun `input color of 3 chars with alpha`() {
-        assertEquals(HexColor("032D").toString(), "#003322DD")
+        assertEquals("#003322DD", HexColor("032D").toString())
     }
 
     @Test
     fun `input color of 3 chars with alpha and #`() {
-        assertEquals(HexColor("#A32D").toString(), "#AA3322DD")
+        assertEquals("#AA3322DD", HexColor("#A32D").toString())
     }
 
     @Test
     fun `input color of 6 chars`() {
-        assertEquals(HexColor("32DAE1").toString(), "#32DAE1")
+        assertEquals("#32DAE1", HexColor("32DAE1").toString())
     }
 
     @Test
     fun `input color of 6 chars with #`() {
-        assertEquals(HexColor("#123456").toString(), "#123456")
+        assertEquals("#123456", HexColor("#123456").toString())
     }
 
     @Test
     fun `input color of 6 chars with alpha`() {
-        assertEquals(HexColor("A1B1C1D1").toString(), "#A1B1C1D1")
+        assertEquals("#A1B1C1D1", HexColor("A1B1C1D1").toString())
     }
 
     @Test
     fun `input color of 6 chars with alpha and #`() {
-        assertEquals(HexColor("#AA93214F").toString(), "#AA93214F")
+        assertEquals("#AA93214F", HexColor("#AA93214F").toString())
     }
 
     @Test
     fun `alpha of 0 percent`() {
-        assertEquals(HexColor("#0931").percentAlpha(), 0)
+        assertEquals(0, HexColor("#0931").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 0%`() {
+        assertEquals(0, HexColor("#0%931").percentAlpha)
+        assertEquals("#00993311", HexColor("#0%931").toString())
     }
 
     @Test
     fun `alpha of 5 percent`() {
-        assertEquals(HexColor("#0D93214F").percentAlpha(), 5)
+        assertEquals(5, HexColor("#0D93214F").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 5%`() {
+        assertEquals(5, HexColor("#5%93214F").percentAlpha)
+        assertEquals("#0D93214F", HexColor("#5%93214F").toString())
     }
 
     @Test
     fun `alpha of 25 percent`() {
-        assertEquals(HexColor("#4093214F").percentAlpha(), 25)
+        assertEquals(25, HexColor("#4093214F").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 25%`() {
+        assertEquals(25, HexColor("#25%93214F").percentAlpha)
+        assertEquals("#4093214F", HexColor("#25%93214F").toString())
     }
 
     @Test
     fun `alpha of 50 percent`() {
-        assertEquals(HexColor("#8093214F").percentAlpha(), 50)
+        assertEquals(50, HexColor("#8093214F").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 50%`() {
+        assertEquals(50, HexColor("#50%93214F").percentAlpha)
+        assertEquals("#8093214F", HexColor("#50%93214F").toString())
     }
 
     @Test
     fun `alpha of 75 percent`() {
-        assertEquals(HexColor("#BF93214F").percentAlpha(), 75)
+        assertEquals(75, HexColor("#BF93214F").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 75%`() {
+        assertEquals(75, HexColor("#75%93214F").percentAlpha)
+        assertEquals("#BF93214F", HexColor("#75%93214F").toString())
     }
 
     @Test
     fun `alpha of 100 percent`() {
-        assertEquals(HexColor("#FF93214F").percentAlpha(), 100)
+        assertEquals(100, HexColor("#FF93214F").percentAlpha)
+    }
+
+    @Test
+    fun `alpha of 100%`() {
+        assertEquals(100, HexColor("#100%93214F").percentAlpha)
+        assertEquals("#FF93214F", HexColor("#100%93214F").toString())
     }
 
     @Test(expected = IllegalArgumentException::class)

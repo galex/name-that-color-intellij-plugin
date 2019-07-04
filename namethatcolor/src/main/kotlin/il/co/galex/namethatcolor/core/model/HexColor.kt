@@ -7,6 +7,8 @@ import il.co.galex.namethatcolor.core.util.roundTo2Decimal
 class HexColor(val input: String) {
 
     private var alpha: String? = null
+    private var hasPercent = false
+    var percentAlpha: Int = 0
     val value: String
 
     init {
@@ -20,12 +22,23 @@ class HexColor(val input: String) {
             cup = cup.substringAfter("#")
         }
 
+        // Add support for Alpha format of percentage : 10%
+        if (cup.contains("%")) {
+            hasPercent = true
+            percentAlpha = cup.substringBefore("%").toInt()
+            alpha = (percentAlpha / 100.0 * 255).roundTo2HexString().toUpperCase()
+            cup = cup.substringAfter("%")
+        }
+
         when (cup.length) {
             3 -> {
                 this.value = cup[0] + cup[0] + cup[1] + cup[1] + cup[2] + cup[2]
             }
 
             4 -> {
+                if (hasPercent) {
+                    throw IllegalArgumentException("Length is weird")
+                }
                 this.value = cup[1] + cup[1] + cup[2] + cup[2] + cup[3] + cup[3]
                 this.alpha = cup[0] + cup[0]
             }
@@ -35,6 +48,9 @@ class HexColor(val input: String) {
             }
 
             8 -> {
+                if (hasPercent) {
+                    throw IllegalArgumentException("Length is weird")
+                }
                 this.value = cup.substring(2)
                 this.alpha = cup.substring(0, 2)
             }
@@ -50,17 +66,16 @@ class HexColor(val input: String) {
             if (!ALPHA_REGEX.matches(it)) {
                 throw IllegalArgumentException("The alpha $alpha is not of a correct format")
             }
+            if (percentAlpha == 0) {
+                percentAlpha = (it.toInt(16) / 255.0).roundTo2Decimal()
+            }
         }
     }
 
     fun rgb() = value.rgb()
     fun hsl() = value.hsl()
 
-    fun percentAlpha(): Int? = alpha?.run { (toInt(16) / 255.0).roundTo2Decimal() }
-
     override fun toString(): String = PREFIX + if (alpha == null) value else "$alpha$value"
-
-    fun inputToString() = if (input.startsWith("#")) input else "$PREFIX$input"
 
     companion object {
         private const val PREFIX = "#"

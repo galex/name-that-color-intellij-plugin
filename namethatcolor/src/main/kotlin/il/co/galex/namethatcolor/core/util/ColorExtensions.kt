@@ -3,6 +3,7 @@ package il.co.galex.namethatcolor.core.util
 import il.co.galex.namethatcolor.core.model.Hsl
 import il.co.galex.namethatcolor.core.model.Rgb
 import il.co.galex.namethatcolor.plugin.util.ALPHA_SEPARATOR
+import kotlin.math.roundToInt
 
 /**
  * Transforms a hexadecimal color like "8D90A1" to an Rgb(141, 144, 161)
@@ -47,7 +48,7 @@ fun String.hsl(): Hsl {
         h *= 60
         if (h < 0) h += 360
 
-        return Hsl(h.round(), s.roundTo2Decimal(), l.roundTo2Decimal())
+        return Hsl(h.roundToInt(), s.roundTo2Decimal(), l.roundTo2Decimal())
     }
 }
 
