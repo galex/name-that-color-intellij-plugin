@@ -6,22 +6,21 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.1"
+    id "org.jetbrains.intellij" version "0.4.10"
     id "org.jetbrains.kotlin.jvm" version "1.2.0"
 }
 
 intellij {
-    version '2018.3'
+    version '2019.2'
     pluginName 'NameThatColor'
     type 'AI'
 }
 
 publishPlugin {
-    username pluginsDevUser
-    password pluginsDevPassword
+    token pluginsDevToken
 }
 
 patchPluginXml {
-    version "1.5.0"
+    version "1.5.1"
     sinceBuild '171'
 }
