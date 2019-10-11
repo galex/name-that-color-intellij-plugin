@@ -55,6 +55,9 @@ If you chose to use "Name that color", this [list of colors](https://github.com/
 * Alpha + Color 
   * **6abc** -> `<color name="casper_alpha_40">#6abc</color>`
   * **60ab12dc** -> `<color name="electric_violet_alpha_38">#60ab12dc</color>`
+* Alpha(%) + Color
+  * **40%abc** -> `<color name="casper_alpha_40">#66AABBCC</color>`
+  * **38%ab12dc** -> `<color name="electric_violet_alpha_38">#61AB12DC</color>`
 
 ### Name that material color
 
@@ -68,7 +71,10 @@ If you chose to use "Name that material color", this [list of material colors](h
 * Alpha + Color 
   * **6abc** -> `<color name="blue_grey_200_alpha_40">#6abc</color>`
   * **60ab12dc** -> `<color name="purple_a700_alpha_38">#60ab12dc</color>`
-
+* Alpha(%) + Color
+  * **40%abc** -> `<color name="blue_grey_200_alpha_40">#66AABBCC</color>`
+  * **38%ab12dc** -> `<color name="purple_a700_alpha_38">#61AB12DC</color>`
+  
 ## Install
 
 In Android Studio, open **Settings** > **Plugins** > **Browse Plugins** and type "**name that color**".
