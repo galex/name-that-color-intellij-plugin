@@ -26,6 +26,6 @@ publishPlugin {
 }
 
 patchPluginXml {
-    version "1.7.0"
+    version "1.7.1"
     sinceBuild '201.3803.71'
 }
