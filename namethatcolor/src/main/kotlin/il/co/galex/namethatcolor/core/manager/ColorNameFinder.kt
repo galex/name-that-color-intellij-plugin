@@ -7,6 +7,7 @@ import il.co.galex.namethatcolor.core.util.colorsMaterialNames
 import il.co.galex.namethatcolor.core.util.colorsNames
 import il.co.galex.namethatcolor.core.util.hsl
 import il.co.galex.namethatcolor.core.util.rgb
+import kotlin.math.pow
 
 /**
  * Class which loads all the hex codes and names and prepare the RGB and HSL values to be searched for an exact or closest match
@@ -42,8 +43,8 @@ object ColorNameFinder {
 
             if (color.value == col.hexCode) return color to col
             else {
-                val ndf1 = Math.pow((r - col.rgb.r).toDouble(), 2.0).toInt() + Math.pow((g - col.rgb.g).toDouble(), 2.0).toInt() + Math.pow((b - col.rgb.b).toDouble(), 2.0).toInt()
-                val ndf2 = Math.pow((h - col.hsl.h).toDouble(), 2.0).toInt() + Math.pow((s - col.hsl.s).toDouble(), 2.0).toInt() + Math.pow((l - col.hsl.l).toDouble(), 2.0).toInt()
+                val ndf1 = (r - col.rgb.r).toDouble().pow(2.0).toInt() + (g - col.rgb.g).toDouble().pow(2.0).toInt() + (b - col.rgb.b).toDouble().pow(2.0).toInt()
+                val ndf2 = (h - col.hsl.h).toDouble().pow(2.0).toInt() + (s - col.hsl.s).toDouble().pow(2.0).toInt() + (l - col.hsl.l).toDouble().pow(2.0).toInt()
                 val ndf = ndf1 + ndf2 * 2
                 if (df < 0 || df > ndf) {
                     df = ndf

@@ -15,6 +15,7 @@ import il.co.galex.namethatcolor.core.model.HexColor
 import il.co.galex.namethatcolor.core.util.toXmlName
 import il.co.galex.namethatcolor.plugin.util.xmlOutput
 
+@Suppress("DialogTitleCapitalization")
 class NameColorIntention(private val text: String, private val hexColor: HexColor, private val find: (color: HexColor) -> Pair<HexColor, Color>) : IntentionAction {
 
     override fun getFamilyName(): String = "Name That Color"
@@ -26,7 +27,7 @@ class NameColorIntention(private val text: String, private val hexColor: HexColo
 
         if (file is XmlFile) {
             file.rootTag?.let { rootTag ->
-                val elements = rootTag.children.filter { it is XmlText }
+                val elements = rootTag.children.filterIsInstance<XmlText>()
                 elements.forEach { oldElement ->
                     if (oldElement.text.contains(hexColor.input)) {
 
