@@ -12,7 +12,7 @@
 
     <change-notes><![CDATA[
     <b>1.7.1</b><br>
-     - Updated plugin to latest IntelliJ CE preview version (2021.1)<br>
+     - Updated plugin to latest IntelliJ version (2020.3)<br>
      ]]></change-notes>
     <idea-version since-build="201.6668.113"/>
 
