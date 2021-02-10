@@ -21,9 +21,9 @@ intellij {
     type 'AI'
 }
 
-publishPlugin {
+/*publishPlugin {
     token pluginsDevToken
-}
+}*/
 
 patchPluginXml {
     version "1.7.1"
