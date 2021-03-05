@@ -17,6 +17,8 @@
     <idea-version since-build="201.6668.113"/>
 
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.completion.ClipboardCompletionContributor" />
