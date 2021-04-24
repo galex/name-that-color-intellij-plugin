@@ -2,16 +2,17 @@ package il.co.galex.namethatcolor.core.util
 
 import il.co.galex.namethatcolor.core.model.Hsl
 import il.co.galex.namethatcolor.core.model.Rgb
-import il.co.galex.namethatcolor.plugin.util.ALPHA_SEPARATOR
+import il.co.galex.namethatcolor.plugin.util.KOTLIN_ALPHA_SEPARATOR
+import il.co.galex.namethatcolor.plugin.util.XML_ALPHA_SEPARATOR
 import kotlin.math.roundToInt
 
 /**
  * Transforms a hexadecimal color like "8D90A1" to an Rgb(141, 144, 161)
  */
 fun String.rgb() = Rgb(
-        r = this.substring(0, 2).toInt(16),
-        g = this.substring(2, 4).toInt(16),
-        b = this.substring(4, 6).toInt(16)
+    r = this.substring(0, 2).toInt(16),
+    g = this.substring(2, 4).toInt(16),
+    b = this.substring(4, 6).toInt(16)
 )
 
 /**
@@ -56,7 +57,15 @@ fun String.hsl(): Hsl {
 fun String.toXmlName(percentAlpha: Int?): String {
     var name = this.toLowerCase().replace(" ", "_")
     if (percentAlpha != null) {
-        name += "$ALPHA_SEPARATOR$percentAlpha"
+        name += "$XML_ALPHA_SEPARATOR$percentAlpha"
+    }
+    return name
+}
+
+fun String.toKotlinName(percentAlpha: Int?): String {
+    var name = this.replace(" ", "")
+    if (percentAlpha != null) {
+        name += "$KOTLIN_ALPHA_SEPARATOR$percentAlpha"
     }
     return name
 }

@@ -19,9 +19,16 @@
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.completion.ClipboardCompletionContributor" />
-        <completion.contributor language="XML" implementationClass="il.co.galex.namethatcolor.plugin.completion.CaretCompletionContributor" />
+        <completion.contributor language="XML"
+                                implementationClass="il.co.galex.namethatcolor.plugin.completion.ClipboardCompletionContributor"/>
+        <completion.contributor language="XML"
+                                implementationClass="il.co.galex.namethatcolor.plugin.completion.CaretCompletionContributor"/>
         <annotator language="XML" implementationClass="il.co.galex.namethatcolor.plugin.annotator.ColorAnnotator"/>
 
+        <!--Kotlin Support-->
+        <completion.contributor language="kotlin"
+                                implementationClass="il.co.galex.namethatcolor.plugin.completion.ClipboardCompletionKotlinContributor"/>
+
     </extensions>
+
 </idea-plugin>

@@ -16,16 +16,16 @@ repositories {
 }
 
 intellij {
-    version '2020.3.2'
+    version '2021.1'
     pluginName 'NameThatColor'
-    type 'AI'
+    type 'IC'
 }
 
-publishPlugin {
+/*publishPlugin {
     token pluginsDevToken
-}
+}*/
 
 patchPluginXml {
-    version "1.7.1"
+    version "1.7.2"
     sinceBuild '201.6668.113'
 }
