@@ -20,11 +20,11 @@ intellij {
     pluginName 'NameThatColor'
 }
 
-//publishPlugin {
-//    token pluginsDevToken
-//}
+publishPlugin {
+    token pluginsDevToken
+}
 
 patchPluginXml {
-    version "1.7.1"
+    version "1.7.2"
     sinceBuild '201.6668.113'
 }
