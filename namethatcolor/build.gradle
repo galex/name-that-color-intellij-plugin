@@ -16,15 +16,16 @@ repositories {
 }
 
 intellij {
-    version '2021.1'
+    version '211.7442.40'
     pluginName 'NameThatColor'
+    plugins = ['android']
 }
 
-publishPlugin {
-    token pluginsDevToken
-}
+//publishPlugin {
+//    token pluginsDevToken
+//}
 
 patchPluginXml {
-    version "1.7.2"
+    version "1.7.3"
     sinceBuild '201.6668.113'
 }
