@@ -6,8 +6,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.6.5"
-    id "org.jetbrains.kotlin.jvm" version "1.4.30-RC"
+    id "org.jetbrains.intellij" version "0.7.2"
+    id "org.jetbrains.kotlin.jvm" version "1.4.32"
 }
 
 repositories {
@@ -16,9 +16,9 @@ repositories {
 }
 
 intellij {
-    version '2020.3.2'
+    version '211.7628.21'
     pluginName 'NameThatColor'
-    type 'AI'
+    plugins = ['android']
 }
 
 publishPlugin {
@@ -26,6 +26,6 @@ publishPlugin {
 }
 
 patchPluginXml {
-    version "1.7.1"
+    version "1.7.3"
     sinceBuild '201.6668.113'
 }
